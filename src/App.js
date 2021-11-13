@@ -31,7 +31,7 @@ function makeid(length) {
 
 const SOCKET_URL =
   process.env.NODE_ENV === "production"
-    ? "https://" + makeid(5) + "." + process.env.REACT_APP_SOCKET_URL
+    ? "http://" + makeid(5) + "." + process.env.REACT_APP_SOCKET_URL
     : process.env.REACT_APP_SOCKET_URL;
 
 const socket = io(SOCKET_URL, {
