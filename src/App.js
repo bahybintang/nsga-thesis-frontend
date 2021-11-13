@@ -18,7 +18,21 @@ import ResultAccordion from "./components/ResultAccordion.js";
 import ConfirmationDialog from "./components/ConfirmationDialog.js";
 import "./App.css";
 
-const SOCKET_URL = process.env.REACT_APP_SOCKET_URL;
+function makeid(length) {
+  var result = "";
+  var characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var charactersLength = characters.length;
+  for (var i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
+const SOCKET_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://" + makeid(5) + "." + process.env.REACT_APP_SOCKET_URL
+    : process.env.REACT_APP_SOCKET_URL;
 
 const socket = io(SOCKET_URL, {
   withCredentials: true,
